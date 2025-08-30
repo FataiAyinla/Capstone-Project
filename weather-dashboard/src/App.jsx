@@ -5,8 +5,12 @@ import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import RecentSearches from "./components/RecentSearches";
 import SkeletonCard from "./components/SkeletonCard";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+
 
 export default function App() {
   const [city, setCity] = useState("");
