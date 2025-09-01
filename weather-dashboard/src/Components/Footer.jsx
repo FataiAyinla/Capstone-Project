@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="text-center text-white/80 mt-6 text-sm">
+    <footer className="text-center p-4 text-white bg-blue-700">
       Built by Kenku Fatai using React + OpenWeather API
     </footer>
   );

@@ -1,16 +1,36 @@
-export default function WeatherCard({ weather }) {
+// src/WeatherCard.jsx
+export default function WeatherCard({ city, temp, description, icon, children }) {
+  // Build icon URL only if icon code exists
+  const iconUrl = icon
+    ? `https://openweathermap.org/img/wn/${icon}@2x.png`
+    : null;
+
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mt-6 w-72 text-center">
-      <h3 className="text-lg font-bold text-gray-800">{weather.name}</h3>
-      <img
-        src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-        alt={weather.weather[0].description}
-        className="mx-auto"
-      />
-      <p className="text-3xl font-bold text-blue-600">{weather.main.temp}°C</p>
-      <p className="text-gray-600">Condition: {weather.weather[0].main}</p>
-      <p className="text-gray-600">Humidity: {weather.main.humidity}%</p>
-      <p className="text-gray-600">Wind Speed: {weather.wind.speed} km/h</p>
+    <div className="bg-white rounded-2xl shadow-lg p-6 w-full max-w-md text-center">
+      {/* Weather Icon */}
+      {iconUrl && (
+        <img
+          src={iconUrl}
+          alt={description || "Weather Icon"}
+          className="w-20 h-20 mx-auto mb-3"
+        />
+      )}
+
+      {/* City Name */}
+      <h2 className="text-2xl font-bold">{city || "Weather Dashboard"}</h2>
+
+      {/* Weather Description */}
+      {description && (
+        <p className="capitalize text-gray-600">{description}</p>
+      )}
+
+      {/* Temperature */}
+      {temp !== undefined && (
+        <p className="text-4xl font-extrabold mt-2">{Math.round(temp)}°C</p>
+      )}
+
+      {/* Children (search box, error message, etc.) */}
+      <div className="mt-4">{children}</div>
     </div>
   );
 }
